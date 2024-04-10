@@ -14,7 +14,7 @@
             $tabla = "";
 
             //consulta de obras
-            $consulta = "SELECT * FROM obras";
+            $consulta = "SELECT * FROM obras WHERE estadoObra = 'activo'";
             $conexion = mainModel::conectar();
 
 			$datos = $conexion->query($consulta);
