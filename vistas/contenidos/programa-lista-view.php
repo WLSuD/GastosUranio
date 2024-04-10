@@ -10,6 +10,7 @@
     <h3 class="text-left text-uppercase">
         <i class="fas fa-calendar-minus fa-fw"></i> &nbsp; Lista de programas
     </h3>
+    <?php include "./vistas/desc/desc_regresos.php"; ?>
     <ul class="full-box list-unstyled page-nav-tabs text-uppercase">
         <li>
             <a href="<?php echo SERVERURL; ?>programa-new/<?php echo $lc->encryption($campos['obraId'])?>/">
