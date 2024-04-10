@@ -1,0 +1,33 @@
+<div class="login-container">
+    <div class="login-content">
+        <p class="text-center">
+            <!--i class="fas fa-user-circle fa-5x"></i> -->
+            <img src="../vistas/assets/img/LOGOU1.png" alt="img-logo" height="70px" width="90px">
+        </p>
+        <p class="text-center" style="color:black ">
+            Inicio de Sesión
+        </p>
+        <form method="POST" autocomplete="off">
+            <div class="form-group">
+                <label for="UserName" class="bmd-label-floating"><i class="fa-solid fa-user"></i> &nbsp; Usuario</label>
+                <input type="text" class="form-control" id="UserName" name="usuario_log" pattern="[a-zA-Z0-9]{4,35}" maxlength="35" required="" >
+            </div>
+            <div class="form-group">
+                <label for="UserPassword" class="bmd-label-floating"><i class="fas fa-key"></i> &nbsp; Contraseña</label>
+                <input type="password" class="form-control" id="UserPassword" name="clave_log" pattern="[a-zA-Z0-9$@.-]{7,100}" maxlength="100" required="">
+            </div>
+            <!--<button type="submit" class="btn-login text-center">Ingresar</button>-->
+            <button type="submit" class="btn text-center">
+                Ingresar
+            </button>
+        </form>
+    </div>
+</div>
+<?php
+	if(isset($_POST['usuario_log']) && isset($_POST['clave_log'])){
+		require_once "./controladores/loginControlador.php";
+
+		$ins_login= new loginControlador();
+		$ins_login->iniciar_sesion_controlador();
+	}
+?>
