@@ -10,7 +10,7 @@
     <h3 class="text-left text-uppercase">
         <i class="fas fa-hand-holding-dollar fa-fw"></i> &nbsp; Nuevo ingreso
     </h3>
-    <!--<?php include "./vistas/desc/desc_proveedor.php"; ?>-->
+    <?php include "./vistas/desc/desc_regresos.php"; ?>
 </div>
 
 <div class="container-fluid">
