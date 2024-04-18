@@ -6,14 +6,16 @@
         if($datos_obra->rowCount()==1){
             $campos=$datos_obra->fetch();
 ?>
-<div class="full-box page-header">
-    <h3 class="text-left text-uppercase">
-        <i class="fas fa-sack-dollar fa-fw"></i> &nbsp; Lista de ingreso
-    </h3>
+<div class="row">
+    <div class="col-12 col-md-8">
+        <h3 class="text-left "><!-- text-uppercase-->
+            <i class="fas fa-calendar-plus fa-fw"></i> &nbsp; Obra <?php echo $campos['abreviatura'] ?>
+        </h3>
+    </div>
     <?php include "./vistas/desc/desc_regresos.php"; ?>
 </div>
 
-<div class="container-fluid">
+<div class="full-box page-header">
     <ul class="full-box list-unstyled page-nav-tabs text-uppercase">
         <li>
             <a href="<?php echo SERVERURL; ?>ingreso-new/<?php echo $lc->encryption($campos['obraId'])?>/">
