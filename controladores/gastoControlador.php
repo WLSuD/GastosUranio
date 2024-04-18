@@ -693,7 +693,7 @@
 			### Cuerpo de la tabla ###
 			$tabla.='
 				<div class="table-responsive">
-				<table  id="example1" class="table table-dark table-sm">
+				<table  id="example1" class="table table-dark table-sm" style="width:100%">
 					<thead>
 						<tr class="text-center ">
 							<th>#</th>
@@ -912,7 +912,7 @@
 			
 
 				<div class="table-responsive">
-				<table  id="example1" class="table table-dark table-sm">
+				<table  id="example1" class="table table-dark table-sm" style="width:100%">
 					<thead>
 						<tr class="text-center ">
 							<th>#</th>
