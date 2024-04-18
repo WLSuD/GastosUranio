@@ -6,3 +6,4 @@
         <p class="text-right"><a href="<?php echo SERVERURL; ?>programa-menu/<?php echo $lc->encryption($campos['obraId'])?>/" class="btn  btn-dark "><i class="fa fa-diagram-project fa-fw"></i> &nbsp; Regresar a procesos</a></p>
     </div>
 </div>
+
