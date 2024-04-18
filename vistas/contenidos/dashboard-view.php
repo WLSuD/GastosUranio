@@ -4,7 +4,8 @@
         <i class="fab fa-dashcube fa-fw"></i> &nbsp; DASHBOARD
     </h3>
     <p class="text-justify">
-        ¡hola Bienvenido <strong><?php echo $_SESSION['nombre_svi']." ".$_SESSION['apellido_svi']; ?></strong>! Este es el panel principal del sistema acá podrá encontrar atajos para acceder a los distintos listados de cada módulo del sistema.
+        ¡hola Bienvenido <strong><?php echo $_SESSION['nombre_svi']." ".$_SESSION['apellido_svi']; ?></strong>
+        ! Este es el panel principal del sistema acá podrá encontrar atajos para acceder a los procesos de cada obra activa del sistema.
     </p>
 </div>
 <div class="container-fluid">
