@@ -96,8 +96,7 @@
                             $datos_programas = $lc->ejecutar_consulta_simple_publica("SELECT * FROM programas WHERE saldo > 0 AND obraId = $obraId AND estado = 'cerrado'"); 
                             if($datos_programas -> rowCount()>0){
                             $campos_programa = $datos_programas->fetch();
-                                echo 'S/.'.$campos_programa['saldo'].' del  programa '.$campos_programa['codigo'];
-                            
+                                echo 'S/.'.$campos_programa['saldo'].' del  programa '.$campos_programa['codigo'];  
                         ?>
                         <input type="hidden" name="saldo_reg" value="<?php echo $campos_programa['saldo'] ?>">
                         <input type="hidden" name="programaAnt_reg" value="<?php echo $campos_programa['programaId'] ?>">

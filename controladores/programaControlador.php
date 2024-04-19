@@ -202,7 +202,7 @@
 
 			$datos = $datos->fetchAll();
 
-			$total = $conexion->query("SELECT FOUND_ROWS()");
+			$total = $conexion->query("SELECT FOUND_ROWS()");			
 			$total = (int) $total->fetchColumn();
 
 			$Npaginas =ceil($total/$registros);
