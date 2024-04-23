@@ -25,6 +25,13 @@
         </h7>
     </div>
     <div class="col-12 col-md-6">
+        <ul class="full-box list-unstyled page-nav-tabs text-uppercase">
+            <li>
+                <a href="<?php echo SERVERURL; ?>gasto-programa/<?php echo $lc->encryption($campos['programaId'])?>/">
+                    <i class="fas fa-money-bill-transfer fa-fw"></i> &nbsp; PROGRAMAR
+                </a>
+            </li>
+        </ul>
     </div>
 </div>
 <?php 
