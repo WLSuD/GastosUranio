@@ -8,6 +8,7 @@
         ! Este es el panel principal del sistema acá podrá encontrar atajos para acceder a los procesos de cada obra activa del sistema.
     </p>
 </div>
+
 <div class="container-fluid">
     <div class="full-box tile-container">
     <!-- INICIO VISTA DASHBOARD ADMINISTRADOR -->

@@ -52,21 +52,21 @@
             $tabla = "";
 
             $tabla .= '
-            <a href="'.SERVERURL.'gasto-new/'.mainModel::encryption($obraId).'/" class="tile">
+            <a href="'.SERVERURL.'gasto-lista/'.mainModel::encryption($obraId).'/" class="tile">
                 <div class="tile-tittle">GASTOS</div>
                 <br><br>
                 <div class="tile-icon">
                     <i class="fas fa-sack-xmark"></i>
                 </div>
             </a>
-            <a href="'.SERVERURL.'programa-new/'.mainModel::encryption($obraId).'/" class="tile">
+            <a href="'.SERVERURL.'programa-lista/'.mainModel::encryption($obraId).'/" class="tile">
                 <div class="tile-tittle">PROGRAMAS</div>
                 <br><br>
                 <div class="tile-icon">
                     <i class="fas fa-calendar-days"></i>
                 </div>
             </a>
-            <a href="'.SERVERURL.'ingreso-new/'.mainModel::encryption($obraId).'/" class="tile">
+            <a href="'.SERVERURL.'ingreso-lista/'.mainModel::encryption($obraId).'/" class="tile">
                 <div class="tile-tittle">INGRESOS</div>
                 <br><br>
                 <div class="tile-icon">
