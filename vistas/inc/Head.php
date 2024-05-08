@@ -32,9 +32,6 @@
 <!-- jQuery V3.4.1 -->
 <script src="<?php echo SERVERURL; ?>vistas/js/jquery-3.4.1.min.js" ></script>
 
-<!-- General Styles -->
-<link rel="stylesheet" href="<?php echo SERVERURL; ?>vistas/css/style.css">
-
 <!-- CDN DE DATATABLES EN LISTAS HTML --->
 
 <link rel="stylesheet" href="https://cdn.datatables.net/2.0.0/css/dataTables.dataTables.css" />
@@ -59,3 +56,6 @@
 
   <!-- Template Main CSS File -->
   <link href="<?php echo SERVERURL; ?>vistas/assetss/css/style.css" rel="stylesheet">
+
+  <!-- General Styles -->
+<link rel="stylesheet" href="<?php echo SERVERURL; ?>vistas/css/style.css">
