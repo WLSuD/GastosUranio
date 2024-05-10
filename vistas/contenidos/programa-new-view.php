@@ -31,7 +31,7 @@
 </div>
 
 
-<div class="container-fluid">
+<div class="container-fluid" >
 
     <form class="form-neon FormularioAjax" action="<?php echo SERVERURL; ?>ajax/programaAjax.php" method="POST" data-form="save" autocomplete="off">
         <input type="hidden" name="modulo_programa" value="registrar">
@@ -103,8 +103,10 @@
 
                         <?php }else{
                              echo 'Sin saldo a Sumar';
-                             }
                             ?>
+                                <input type="hidden" name="saldo_reg" value="0">
+                                <input type="hidden" name="programaAnt_reg" value="0">
+                            <?php  }?>
                         </div>
                     </div>
                 </div>

@@ -49,6 +49,7 @@
 				echo json_encode($alerta);
 				exit();
             }
+
             /*
             if(mainModel::verificar_datos("[0-9.]{1,25}",$monto)){
 				$alerta=[
@@ -127,24 +128,23 @@
 
 			if($agregar_programa->rowCount()==1){
 
-				
-
 				$cambio_estado = mainModel::cambio_estado("ingresos","estado","asignado","ingresoId",$ingresoId);
-				if($cambio_estado->rowCount()==1){
+				if($saldoP>0){
 					//cambio de saldo de programa cerrado con saldo
 					$cambio_saldo = mainModel::cambio_saldo("programar","programas","saldo",$saldoP,"programaId",$programaAnt);
-					if($cambio_saldo->rowCount()==1){
-						$alerta=[
-							"Alerta"=>"limpiar",
-							"Titulo"=>"¡Programa registrada!",
-							"Texto"=>"El programa se registró con éxito en el sistema",
-							"Tipo"=>"success"
-						
-						];
-					}$cambio_saldo->closeCursor();
+					$cambio_saldo->closeCursor();
 					$cambio_saldo = mainModel::desconectar($cambio_saldo);
-				}	$cambio_estado->closeCursor();
+				}
+				$cambio_estado->closeCursor();
 				$cambio_estado = mainModel::desconectar($cambio_estado);
+			
+				$alerta=[
+					"Alerta"=>"limpiar",
+					"Titulo"=>"¡Programa registrada!",
+					"Texto"=>"El programa se registró con éxito en el sistema",
+					"Tipo"=>"success"
+			
+			];
 
 			}else{
 				$alerta=[
