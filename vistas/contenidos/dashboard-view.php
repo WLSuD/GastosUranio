@@ -193,23 +193,68 @@
                 </div>
 
                 <div class="card-body">
-                  <h5 class="card-title">Reports <span>/Today</span></h5>
+                  <h5 class="card-title">Reportes <span>/Hoy</span></h5>
 
                   <!-- Line Chart -->
                   <div id="reportsChart"></div>
 
+                  <?php 
+                    //gastos
+                    $hoy = date('n');
+                      $gastos   =   $lc->ejecutar_consulta_simple_publica("SELECT * FROM gastos WHERE MONTH(fechaHora) = $hoy");
+                      $totas = $gastos->fetchAll();
+                      $cart = array();
+                      foreach($totas as $rows){
+                        $cart[] = $rows['monto'];
+                      }
+
+                    //ingresos
+                      $ingresos   =   $lc->ejecutar_consulta_simple_publica("SELECT * FROM ingresos");
+                      $totai = $ingresos->fetchAll();
+                      $ingr = array();
+                      foreach($totai as $rowsi){
+                        $ingr[] = $rowsi['monto'];
+                      }
+
+                    //programas
+                      $programas   =   $lc->ejecutar_consulta_simple_publica("SELECT * FROM programas");
+                      $totap = $programas->fetchAll();
+                      $prog = array();
+                      foreach($totap as $rowsp){
+                        $prog[] = $rowsp['saldo'];
+                      }
+                      
+                  ?>
+
                   <script>
+                    //gastos
+                    var arrayjs = <?php echo json_encode($cart); ?>;
+                    var arr = Array.from(arrayjs);
+
+                    //ingresos
+                    var arrayjsi = <?php echo json_encode($ingr); ?>;
+                    var arri = Array.from(arrayjsi);
+
+                    //ingresos
+                    var arrayjsp = <?php echo json_encode($prog); ?>;
+                    var arrp = Array.from(arrayjsp);
+                    
+                    /*for(var i=0; i<arrayjs.length; i++){ 
+                      
+                      document.write(arrayjs[i]+",");
+                    }*/
+
                     document.addEventListener("DOMContentLoaded", () => {
                       new ApexCharts(document.querySelector("#reportsChart"), {
                         series: [{
-                          name: 'Sales',
-                          data: [31, 40, 28, 51, 42, 82, 56],
+                          name: 'Gastos',
+                          data: arr
                         }, {
-                          name: 'Revenue',
-                          data: [11, 32, 45, 32, 34, 52, 41]
+                          name: 'Ingresos',
+                          data: arri
                         }, {
-                          name: 'Customers',
-                          data: [15, 11, 32, 18, 9, 24, 11]
+                          name: 'saldo Programa',
+                          data: arrp
                         }],
                         chart: {
                           height: 350,
@@ -240,7 +285,9 @@
                         },
                         xaxis: {
                           type: 'datetime',
-                          categories: ["2018-09-19T00:00:00.000Z", "2018-09-19T01:30:00.000Z", "2018-09-19T02:30:00.000Z", "2018-09-19T03:30:00.000Z", "2018-09-19T04:30:00.000Z", "2018-09-19T05:30:00.000Z", "2018-09-19T06:30:00.000Z"]
+                          categories: ["2018-09-19T08:00:00.000Z", "2018-09-19T09:30:00.000Z", "2018-09-19T10:30:00.000Z", "2018-09-19T11:30:00.000Z", 
+                                        "2018-09-19T12:30:00.000Z", "2018-09-19T13:30:00.000Z", "2018-09-19T14:30:00.000Z", "2018-09-19T15:30:00.000Z",
+                                        "2018-09-19T16:30:00.000Z", "2018-09-19T17:30:00.000Z", "2018-09-19T18:30:00.000Z", "2018-09-19T19:30:00.000Z"]
                         },
                         tooltip: {
                           x: {
@@ -275,54 +322,52 @@
                 </div>
 
                 <div class="card-body">
-                  <h5 class="card-title">Recent Sales <span>| Today</span></h5>
+                  <h5 class="card-title">Detalle Programas <span>| Activos</span></h5>
 
                   <table class="table table-borderless datatable">
                     <thead>
                       <tr>
-                        <th scope="col">#</th>
-                        <th scope="col">Customer</th>
-                        <th scope="col">Product</th>
-                        <th scope="col">Price</th>
-                        <th scope="col">Status</th>
+                        <th scope="col">Programa</th>
+                        <th scope="col">Obra</th>
+                        <th scope="col">Ingreso</th>
+                        <th scope="col">Gastos</th>
+                        <th scope="col">Pagos</th>
                       </tr>
                     </thead>
                     <tbody>
-                      <tr>
-                        <th scope="row"><a href="#">#2457</a></th>
-                        <td>Brandon Jacob</td>
-                        <td><a href="#" class="text-primary">At praesentium minu</a></td>
-                        <td>$64</td>
-                        <td><span class="badge bg-success">Approved</span></td>
-                      </tr>
-                      <tr>
-                        <th scope="row"><a href="#">#2147</a></th>
-                        <td>Bridie Kessler</td>
-                        <td><a href="#" class="text-primary">Blanditiis dolor omnis similique</a></td>
-                        <td>$47</td>
-                        <td><span class="badge bg-warning">Pending</span></td>
-                      </tr>
-                      <tr>
-                        <th scope="row"><a href="#">#2049</a></th>
-                        <td>Ashleigh Langosh</td>
-                        <td><a href="#" class="text-primary">At recusandae consectetur</a></td>
-                        <td>$147</td>
-                        <td><span class="badge bg-success">Approved</span></td>
-                      </tr>
-                      <tr>
-                        <th scope="row"><a href="#">#2644</a></th>
-                        <td>Angus Grady</td>
-                        <td><a href="#" class="text-primar">Ut voluptatem id earum et</a></td>
-                        <td>$67</td>
-                        <td><span class="badge bg-danger">Rejected</span></td>
-                      </tr>
-                      <tr>
-                        <th scope="row"><a href="#">#2644</a></th>
-                        <td>Raheem Lehner</td>
-                        <td><a href="#" class="text-primary">Sunt similique distinctio</a></td>
-                        <td>$165</td>
-                        <td><span class="badge bg-success">Approved</span></td>
-                      </tr>
+                      <?php
+                        $programaA   =   $lc->ejecutar_consulta_simple_publica("SELECT * FROM programas WHERE estado = 'abierto'");
+                        $datos = $programaA->fetchAll();
+                        foreach($datos as $rows){
+                      ?>
+                        <tr>
+                          <th scope="row"><a href="<?php echo SERVERURL; ?>programa-detalle/<?php echo $lc->encryption($rows['programaId'])?>/"><?php echo $rows['codigo'] ?></a></th>
+                          <?php 
+                            $obraId = $rows['obraId'];
+                            $obraA   =   $lc->ejecutar_consulta_simple_publica("SELECT * FROM obras WHERE obraId = $obraId");
+                            $datoO = $obraA->fetch();
+                          ?>
+                          <td><?php echo $datoO['abreviatura'] ; ?></td>
+                          <?php 
+                            $ingresoId = $rows['ingresoId'];
+                            $ingresoA   =   $lc->ejecutar_consulta_simple_publica("SELECT * FROM ingresos WHERE ingresoId = $ingresoId");
+                            $datoI = $ingresoA->fetch();
+                          ?>
+                          <td><?php echo $datoI['monto'] ; ?></td>
+                          <?php 
+                            $programaId = $rows['programaId'];
+                            $gastoA   =   $lc->ejecutar_consulta_simple_publica("SELECT SUM(monto) as totalG FROM gastos WHERE programaId = $programaId");
+                            $datoG = $gastoA->fetch();
+                          ?>
+                          <td><?php echo $datoG['totalG'] ; ?></td>
+                          <?php 
+                            $programaId = $rows['programaId'];
+                            $gastoP   =   $lc->ejecutar_consulta_simple_publica("SELECT SUM(monto) as totalP FROM gastos WHERE programaId = $programaId AND estadoGasto IS NOT NULL");
+                            $datoP = $gastoP->fetch();
+                          ?>
+                          <td><?php echo $datoP['totalP'] ; ?></td>
+                        </tr>
+                      <?php };?>
                     </tbody>
                   </table>
 
@@ -522,7 +567,7 @@
             </div>
           </div><!-- End Budget Report -->
 
-          <!-- Website Traffic -->
+          <!-- Montos Totales -->
           <div class="card">
             <div class="filter">
               <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
@@ -538,11 +583,26 @@
             </div>
 
             <div class="card-body pb-0">
-              <h5 class="card-title">Website Traffic <span>| Today</span></h5>
+              <h5 class="card-title">Montos Totales <span>| Hoy</span></h5>
 
               <div id="trafficChart" style="min-height: 400px;" class="echart"></div>
 
+              <!-- CONSULTAS -->
+              <?php 
+                $mesA = date('n');
+
+                //$obraId = $rows['obraId'];
+                $ingresosMT   =   $lc->ejecutar_consulta_simple_publica("SELECT SUM(monto) as totalMI FROM ingresos WHERE MONTH(fecha) >= $mesA-1");
+                $datoIMT = $ingresosMT->fetch();
+                $mTotalI = $datoIMT['totalMI'];
+                
+                echo $mTotalI;
+              ?>
+
               <script>
+
+                var mti = <?php echo $mTotalI;?>;
+                
                 document.addEventListener("DOMContentLoaded", () => {
                   echarts.init(document.querySelector("#trafficChart")).setOption({
                     tooltip: {
@@ -572,24 +632,24 @@
                         show: false
                       },
                       data: [{
-                          value: 100,
-                          name: 'Search EngineR'
+                          value: mti,
+                          name: 'Ingresos'
                         },
                         {
                           value: 735,
-                          name: 'Direct'
+                          name: 'Pagados'
                         },
                         {
                           value: 580,
-                          name: 'Email'
+                          name: 'Programados'
                         },
                         {
                           value: 484,
-                          name: 'Union Ads'
+                          name: 'Registrados'
                         },
                         {
                           value: 300,
-                          name: 'Video Ads'
+                          name: 'saldos'
                         }
                       ]
                     }]
@@ -598,7 +658,7 @@
               </script>
 
             </div>
-          </div><!-- End Website Traffic -->
+          </div><!-- FIN Montos Totales -->
 
           <!-- News & Updates Traffic -->
           <div class="card">
